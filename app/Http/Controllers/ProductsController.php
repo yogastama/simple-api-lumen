@@ -24,4 +24,23 @@ class ProductsController extends Controller
         $product = Product::create($data);
         return response()->json($product);
     }
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $this->validate($request, [
+            'name' => 'string',
+            'desc' => 'string',
+            'price' => 'integer',
+            'category' => 'in:food,drink'
+        ]);
+        $data = $request->all();
+        $product->fill($data);
+        $product->save();
+        return response()->json($product);
+    }
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return response()->json($product);
+    }
 }
