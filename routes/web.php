@@ -18,3 +18,4 @@ $router->get('/product', 'ProductsController@index');
 $router->post('/product', 'ProductsController@create');
 $router->get('/product/{id}', 'ProductsController@show');
 $router->put('/product/{id}', 'ProductsController@update');
+$router->delete('/product/{id}', 'ProductsController@delete');

@@ -43,4 +43,15 @@ class ProductsController extends Controller
         $product = Product::find($id);
         return response()->json($product);
     }
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json([
+                'message' => 'Product not found!'
+            ], 404);
+        }
+        $product->delete();
+        return response()->json(['message' => 'Product deleted!']);
+    }
 }
