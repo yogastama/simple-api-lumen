@@ -31,8 +31,15 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            $token = $request->header('token');
+            // if ($request->input('api_token')) {
+            //     return User::where('api_token', $request->input('api_token'))->first();
+            // }
+            // if ($token === 'tokenapi') {
+            //     return new User();
+            // }
+            if ($request->header('token')) {
+                return User::where('token', $token)->first();
             }
         });
     }

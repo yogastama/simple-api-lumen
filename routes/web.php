@@ -19,3 +19,6 @@ $router->post('/product', 'ProductsController@create');
 $router->get('/product/{id}', 'ProductsController@show');
 $router->put('/product/{id}', 'ProductsController@update');
 $router->delete('/product/{id}', 'ProductsController@delete');
+
+$router->post('/user', 'UsersController@create');
+$router->post('/login', 'UsersController@login');
